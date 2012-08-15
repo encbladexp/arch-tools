@@ -1,5 +1,9 @@
 #!/bin/bash
 # Setup Script for a mostly German Arch Linux Installation.
+echo "Installation Editor..."
+pacman -Sy
+pacman --noconfirm -S vim
+echo "...done"
 echo "Bootstrapping Base System..."
 pacstrap /mnt base base-devel vim bash-completion htop grub-bios sudo
 echo "...done"
@@ -26,7 +30,7 @@ echo "...done"
 echo "Chroot session..."
 cat > /mnt/garch-setup << EOF
 #!/bin/bash
-pacman -R vi nano
+pacman --noconfirm -R vi nano
 ln -s /usr/bin/vim /usr/bin/nano
 ln -s /usr/bin/vim /usr/bin/vi
 ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
