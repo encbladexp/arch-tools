@@ -11,7 +11,7 @@ pacman -Sy
 pacman --noconfirm -S vim
 echo "...done"
 echo "Bootstrapping Base System..."
-pacstrap /mnt base base-devel vim bash-completion htop grub-bios sudo
+pacstrap /mnt base base-devel vim bash-completion htop grub-bios sudo nfs-utils
 echo "...done"
 echo "Creating default configuration..."
 genfstab -L /mnt >> /mnt/etc/fstab
