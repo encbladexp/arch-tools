@@ -1,11 +1,17 @@
 #!/bin/bash
 # Setup Script for a mostly German Arch Linux Installation.
+#echo "Mounting Network Cache..."
+#mkdir -p /mnt/var/cache/pacman/pkg
+#mkdir -p /var/cache/pacman/pkg
+#mount server:/pacman /mnt/var/cache/pacman/pkg
+#mount server:/pacman /var/cache/pacman/pkg
+#echo "...done"
 echo "Installation Editor..."
 pacman -Sy
 pacman --noconfirm -S vim
 echo "...done"
 echo "Bootstrapping Base System..."
-pacstrap /mnt base base-devel vim bash-completion htop grub-bios sudo
+pacstrap /mnt base base-devel vim bash-completion htop grub-bios sudo nfs-utils
 echo "...done"
 echo "Creating default configuration..."
 genfstab -L /mnt >> /mnt/etc/fstab
@@ -21,7 +27,6 @@ LC_MESSAGES=C
 EOF
 echo "...done"
 echo "Editor session..."
-vim /mnt/etc/rc.conf
 vim /mnt/etc/mkinitcpio.conf
 vim /mnt/etc/default/grub
 vim /mnt/etc/locale.gen
